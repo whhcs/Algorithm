@@ -42,7 +42,7 @@ class MergeSort {
     }
 
     // 迭代方法实现
-    void mergeSort2(int[] arr) {
+    public static void mergeSort2(int[] arr) {
         if (arr == null || arr.length < 2)
             return;
         int n = arr.length;
@@ -61,5 +61,76 @@ class MergeSort {
                 break;
             mergeSize <<= 1;
         }
+    }
+
+
+    // 利用对数器进行测试
+    // 生成随机数组
+    public static int[] generateRandomArray(int maxSize, int maxValue) {
+        // 随机生成长度为[0, maxSize]的数组
+        int[] arr = new int[(int) ((maxSize + 1) * Math.random())];
+        // 给数组的每个元素赋[-maxValue, maxValue]上的随机值。
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = (int) ((maxValue + 1) * Math.random()) - (int) ((maxValue + 1) * Math.random());
+        }
+        return arr;
+    }
+
+    public static int[] copyArray(int[] arr) {
+        if (arr == null) {
+            return null;
+        }
+
+        int[] res = new int[arr.length];
+        System.arraycopy(arr, 0, res, 0, arr.length);
+        return res;
+    }
+
+    // 判断两个数组是否相等
+    public static boolean isEqual(int[] arr1, int[] arr2) {
+        if ((arr1 == null && arr2 != null) || (arr1 != null && arr2 == null))
+            return false;
+        // 经过上面的if筛选后，只剩下两者都为null或都不会null的情况
+        if (arr1 == null)
+            return true;
+        if (arr1.length != arr2.length)
+            return false;
+
+        for (int i = 0; i < arr1.length; i++) {
+            if (arr1[i] != arr2[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void printArray(int[] arr) {
+        if (arr == null) {
+            return;
+        }
+
+        for (int num : arr)
+            System.out.print(num + " ");
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        int testTime = 500000;
+        int maxSize = 100;
+        int maxValue = 100;
+        System.out.println("测试开始");
+        for (int i = 0; i < testTime; i++) {
+            int[] arr1 = generateRandomArray(maxSize, maxValue);
+            int[] arr2 = copyArray(arr1);
+            mergeSort1(arr1);
+            mergeSort2(arr2);
+            if (!isEqual(arr1, arr2)) {
+                System.out.println("出错了");
+                printArray(arr1);
+                printArray(arr2);
+                break;
+            }
+        }
+        System.out.println("测试结束");
     }
 }
