@@ -1,4 +1,4 @@
-package pers.algorithm.merge;
+package pers.algorithm.mergesort;
 
 class MergeSort {
     // 递归方法实现
