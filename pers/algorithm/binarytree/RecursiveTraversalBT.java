@@ -40,7 +40,7 @@ public class RecursiveTraversalBT {
     }
 
     // test
-    public static void main(String[] args) {
+    public static void test() {
         Node head = new Node(1);
         head.left = new Node(2);
         head.right = new Node(3);
@@ -55,5 +55,9 @@ public class RecursiveTraversalBT {
         System.out.println("=================");
         postOrder(head);
         System.out.println("=================");
+    }
+
+    public static void main(String[] args) {
+        test();
     }
 }
