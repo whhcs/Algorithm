@@ -7,8 +7,8 @@ public class RecursiveTraversalBT {
         public Node left;
         public Node right;
 
-        public Node(int v) {
-            value = v;
+        public Node(int value) {
+            this.value = value;
         }
     }
 
@@ -16,7 +16,7 @@ public class RecursiveTraversalBT {
     public static void preOrder(Node head) {
         if (head == null)
             return;
-        System.out.println(head.value);
+        System.out.print(head.value + " ");
         preOrder(head.left);
         preOrder(head.right);
     }
@@ -26,7 +26,7 @@ public class RecursiveTraversalBT {
         if (head == null)
             return;
         inOrder(head.left);
-        System.out.println(head.value);
+        System.out.print(head.value + " ");
         inOrder(head.right);
     }
 
@@ -36,7 +36,7 @@ public class RecursiveTraversalBT {
             return;
         postOrder(head.left);
         postOrder(head.right);
-        System.out.println(head.value);
+        System.out.print(head.value + " ");
     }
 
     // test
